@@ -52,7 +52,7 @@ asyncio
 
 - De l'asynchrone
 
-- Du python + ...
+- Du python
 
 - Du réseau
 
@@ -64,6 +64,30 @@ Comment que c'est ?
 - Notion de taches non bloquante (coroutine)
 
 - yield from FTW (anti-spaghetti)
+
+Event loop
+==========
+
+.. code-block:: python
+
+    class EventLoop:
+
+        def create_task(self, task):
+            self.tasks = self.tasks[:] + [task]
+
+        def run_tasks(self):
+            for t in tasks:
+                t.run_task()
+
+
+Under the hood
+===============
+
+- task
+
+- timers
+
+- select + callback (socket)
 
 Qu'est ce que le spaghetti?
 =============================
@@ -97,30 +121,6 @@ Pas de callback. Lecture linéaire compréhensible.
         yield from asyncio.sleep(.1)
         resp = yield from http.get('/timeout')
 
-
-Event loop
-==========
-
-.. code-block:: python
-
-    class EventLoop:
-
-        def create_task(self, task):
-            self.tasks = self.tasks[:] + [task]
-
-        def run_tasks(self):
-            for t in tasks:
-                t.run_task()
-
-
-Under the hood
-===============
-
-- task
-
-- timers
-
-- select + callback (socket)
 
 API
 ===
