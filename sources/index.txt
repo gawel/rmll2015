@@ -2,7 +2,7 @@
    :func: linear
 
 =======================
-asyncio
+Arretez de me bloquer
 =======================
 
 .. slide::
@@ -21,14 +21,12 @@ About me
 
 - Créateur de irc3, aiowsgi, aiocron, panoramisk
 
-Quoi c'est ?
-============
 
-- De l'asynchrone
+Pourquoi ça bloque ?
+====================
 
-- Du python + ...
+On attends les entrée / sortie
 
-- Du réseau
 
 Async
 =====
@@ -38,6 +36,25 @@ Async
 
 .. figure:: static/async.png
 
+Async & python
+===============
+
+- Gevent
+
+- Tornado
+
+- Twisted
+
+- ...
+
+asyncio
+============
+
+- De l'asynchrone
+
+- Du python + ...
+
+- Du réseau
 
 Comment que c'est ?
 ===================

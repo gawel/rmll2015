@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>asyncio</title>
+    <title>Arretez de me bloquer</title>
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
@@ -14,8 +14,8 @@
   <body>
     <div id="impress">
       
-  <div class="step first center slide section" id="asyncio">
-<h1>asyncio<a class="headerlink" href="#asyncio" title="Permalink to this headline">¶</a></h1>
+  <div class="step first center slide section" id="arretez-de-me-bloquer">
+<h1>Arretez de me bloquer<a class="headerlink" href="#arretez-de-me-bloquer" title="Permalink to this headline">¶</a></h1>
 <p>Gael Pasgrimaud <a class="reference external" href="http://twitter.com/gawel_">&#64;gawel_</a></p>
 <p>rmll 2015</p>
 </div>
@@ -27,13 +27,9 @@
 <li>Créateur de irc3, aiowsgi, aiocron, panoramisk</li>
 </ul>
 </div>
-<div class="step slide section" data-x="2000" id="quoi-c-est">
-<h1>Quoi c&#8217;est ?<a class="headerlink" href="#quoi-c-est" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>De l&#8217;asynchrone</li>
-<li>Du python + ...</li>
-<li>Du réseau</li>
-</ul>
+<div class="step slide section" data-x="2000" id="pourquoi-ca-bloque">
+<h1>Pourquoi ça bloque ?<a class="headerlink" href="#pourquoi-ca-bloque" title="Permalink to this headline">¶</a></h1>
+<p>On attends les entrée / sortie</p>
 </div>
 <div class="step section" data-x="3000" id="async">
 <h1 class="hidden">Async<a class="headerlink" href="#async" title="Permalink to this headline">¶</a></h1>
@@ -41,7 +37,24 @@
 <img alt="images/async.png" src="images/async.png" />
 </div>
 </div>
-<div class="step slide section" data-x="4000" id="comment-que-c-est">
+<div class="step slide section" data-x="4000" id="async-python">
+<h1>Async &amp; python<a class="headerlink" href="#async-python" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Gevent</li>
+<li>Tornado</li>
+<li>Twisted</li>
+<li>...</li>
+</ul>
+</div>
+<div class="step slide section" data-x="5000" id="asyncio">
+<h1>asyncio<a class="headerlink" href="#asyncio" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>De l&#8217;asynchrone</li>
+<li>Du python + ...</li>
+<li>Du réseau</li>
+</ul>
+</div>
+<div class="step slide section" data-x="6000" id="comment-que-c-est">
 <h1>Comment que c&#8217;est ?<a class="headerlink" href="#comment-que-c-est" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>Fournis l&#8217;implémentation de base d&#8217;une eventloop mono-thread</li>
@@ -49,7 +62,7 @@
 <li>yield from FTW (anti-spaghetti)</li>
 </ul>
 </div>
-<div class="step slide section" data-x="5000" id="qu-est-ce-que-le-spaghetti">
+<div class="step slide section" data-x="7000" id="qu-est-ce-que-le-spaghetti">
 <h1>Qu&#8217;est ce que le spaghetti?<a class="headerlink" href="#qu-est-ce-que-le-spaghetti" title="Permalink to this headline">¶</a></h1>
 <p>Javascript!</p>
 <p>Des callback de callback de callback</p>
@@ -64,7 +77,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="6000" id="avec-asyncio">
+<div class="step slide section" data-x="8000" id="avec-asyncio">
 <h1>Avec asyncio<a class="headerlink" href="#avec-asyncio" title="Permalink to this headline">¶</a></h1>
 <p>Pas de callback. Lecture linéaire compréhensible.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@asyncio.coroutine</span>
@@ -76,7 +89,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="7000" id="event-loop">
+<div class="step slide section" data-x="9000" id="event-loop">
 <h1>Event loop<a class="headerlink" href="#event-loop" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">EventLoop</span><span class="p">:</span>
 
@@ -89,7 +102,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="8000" id="under-the-hood">
+<div class="step slide section" data-x="10000" id="under-the-hood">
 <h1>Under the hood<a class="headerlink" href="#under-the-hood" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>task</li>
@@ -97,7 +110,7 @@
 <li>select + callback (socket)</li>
 </ul>
 </div>
-<div class="step slide section" data-x="9000" id="api">
+<div class="step slide section" data-x="11000" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>asyncio.get_event_loop()</li>
@@ -109,7 +122,7 @@
 <li>loop.run_in_executor()</li>
 </ul>
 </div>
-<div class="step slide section" data-x="10000" id="future">
+<div class="step slide section" data-x="12000" id="future">
 <h1>Future<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>associé à une loop</li>
@@ -132,7 +145,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="11000" id="task">
+<div class="step slide section" data-x="13000" id="task">
 <h1>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>future qui fait quelque chose</li>
@@ -145,7 +158,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="12000" id="outils">
+<div class="step slide section" data-x="14000" id="outils">
 <h1>Outils<a class="headerlink" href="#outils" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>asyncio.sleep()</li>
@@ -154,7 +167,7 @@
 <li>asyncio.async()</li>
 </ul>
 </div>
-<div class="step slide section" data-x="13000" id="protocol">
+<div class="step slide section" data-x="15000" id="protocol">
 <h1>Protocol<a class="headerlink" href="#protocol" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-py"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">asyncio</span>
 
@@ -176,7 +189,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="14000" id="connection-server">
+<div class="step slide section" data-x="16000" id="connection-server">
 <h1>Connection / Server<a class="headerlink" href="#connection-server" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-py"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">from</span> <span class="nn">myapp</span> <span class="kn">import</span> <span class="n">EchoClient</span>
@@ -200,7 +213,7 @@
 </pre></div>
 </div>
 </div>
-<div class="step slide section" data-x="15000" id="cas-d-utilisation">
+<div class="step slide section" data-x="17000" id="cas-d-utilisation">
 <h1>Cas d&#8217;utilisation<a class="headerlink" href="#cas-d-utilisation" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>HTTP - <a class="reference external" href="http://aiohttp.readthedocs.org/">http://aiohttp.readthedocs.org/</a></li>
@@ -209,7 +222,7 @@
 <li>cron - <a class="reference external" href="https://github.com/gawel/aiocron">https://github.com/gawel/aiocron</a></li>
 </ul>
 </div>
-<div class="step slide section" data-x="16000" id="ecosysteme">
+<div class="step slide section" data-x="18000" id="ecosysteme">
 <h1>Ecosystème<a class="headerlink" href="#ecosysteme" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="http://asyncio.org/">asyncio.org</a></li>
