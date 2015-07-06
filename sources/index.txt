@@ -1,0 +1,192 @@
+.. impress::
+   :func: linear
+
+=======================
+asyncio
+=======================
+
+.. slide::
+   :class: first center
+
+Gael Pasgrimaud `@gawel_ <http://twitter.com/gawel_>`_
+
+rmll 2015
+
+About me
+========
+
+- Pythonista `@bearstech <http://twitter.com/bearstech>`_
+
+- Membre fondateur de l'`AFPy <http://www.afpy.org>`_
+
+- Créateur de irc3, aiowsgi, aiocron, panoramisk
+
+Quoi c'est ?
+============
+
+- De l'asynchrone
+
+- Du python + ...
+
+- Du réseau
+
+Async
+=====
+
+.. step::
+   :hide-title: true
+
+.. figure:: static/async.png
+
+
+Comment que c'est ?
+===================
+
+- Fournis l'implémentation de base d'une eventloop mono-thread
+
+- Notion de taches non bloquante (coroutine)
+
+- yield from FTW (anti-spaghetti)
+
+Qu'est ce que le spaghetti?
+=============================
+
+Javascript!
+
+Des callback de callback de callback
+
+.. code-block:: javascript
+
+    $.get('/', function(data) {
+        $.post('/', function(data) {
+            setTimeout(function() { $.get('/timeout', function(data) {
+                ...
+                }, 1000)
+            }
+        }
+    }
+
+Avec asyncio
+============
+
+Pas de callback. Lecture linéaire compréhensible.
+
+.. code-block:: python
+
+    @asyncio.coroutine
+    def get_page():
+        resp = yield from http.get('/')
+        resp = yield from http.post('/', (yield from resp.body))
+        yield from asyncio.sleep(.1)
+        resp = yield from http.get('/timeout')
+
+
+Event loop
+==========
+
+.. code-block:: python
+
+    class EventLoop:
+
+        def create_task(self, task):
+            self.tasks = self.tasks[:] + [task]
+
+        def run_tasks(self):
+            for t in tasks:
+                t.run_task()
+
+
+Under the hood
+===============
+
+- task
+
+- timers
+
+- select + callback (socket)
+
+API
+===
+
+- asyncio.get_event_loop()
+
+- loop.run_until_complete(coroutine)
+
+- loop.run_forever()
+
+- loop.create_task(coroutine) (3.4.2)
+
+- loop.call_soon(callback)
+
+- loop.call_later(int, callback)
+
+- loop.run_in_executor()
+
+Future
+======
+
+- associé à une loop
+
+- yield from future
+
+.. literalinclude:: future.py
+   :language: py
+
+Task
+======
+
+- future qui fait quelque chose
+
+.. code-block:: py
+
+    result = yield from asyncio.Task(coro)
+
+.. code-block:: py
+
+    t = asyncio.Task(coro)
+    t.add_done_callback(func)
+
+Outils
+======
+
+- asyncio.sleep()
+
+- asyncio.wait_for()
+
+- asyncio.gather()
+
+- asyncio.async()
+
+Protocol
+========
+
+.. literalinclude:: protocol.py
+   :language: py
+
+Connection / Server
+===================
+
+.. literalinclude:: connections.py
+   :language: py
+
+
+Cas d'utilisation
+=================
+
+- HTTP - http://aiohttp.readthedocs.org/
+
+- irc - https://github.com/gawel/irc3
+
+- asterisk - https://github.com/gawel/panoramisk
+
+- cron - https://github.com/gawel/aiocron
+
+
+Ecosystème
+==========
+
+- `asyncio.org <http://asyncio.org/>`_
+
+- `asyncio <https://docs.python.org/3/library/asyncio.html>`_
+
+- `Talk de Victor Stinner @PyconFr <http://www.infoq.com/fr/presentations/exploration-boucle-evenement-asyncio>`_ (`slides <https://speakerdeck.com/haypo/exploration-de-la-boucle-devenements-asyncio>`_)
