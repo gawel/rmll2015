@@ -70,6 +70,21 @@ Event loop
 
 .. code-block:: python
 
+
+    class Task:
+
+        def __init__(self, callback):
+            self.callback = callback
+
+        def run_task(self):
+            self.callback()
+
+Event loop
+==========
+
+.. code-block:: python
+
+
     class EventLoop:
 
         def create_task(self, task):
