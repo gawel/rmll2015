@@ -79,6 +79,10 @@ Event loop
             for t in tasks:
                 t.run_task()
 
+        def run_forever(self):
+            while True:
+                self.run_tasks()
+
 
 Under the hood
 ===============

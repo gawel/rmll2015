@@ -72,6 +72,10 @@
     <span class="k">def</span> <span class="nf">run_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="n">t</span><span class="o">.</span><span class="n">run_task</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">run_tasks</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
